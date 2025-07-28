@@ -23,7 +23,7 @@ def login ():
 
 	if username not in login_attempts:
 		login_attempts[username] = 0
-	
+
 	if login_attempts[username] >= MAX_ATTEMPTS:
 		return "<h2>Too many failed attempts. Access Blocked.</h2>"
 
@@ -35,4 +35,9 @@ def login ():
 		return f"<h2>Invalid login. Attempt {login_attempts[username]}/{MAX_ATTEMPTS}</h2>"
 
 if __name__ == '__main__':
-	app.run(debug=True)
+	import os
+	app.run(
+		host='0.0.0.0',
+		port=int(os.environ.get("PORT", 5000)),
+		debug=True
+	)
