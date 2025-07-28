@@ -1,9 +1,10 @@
 from flask import Flask, render_template, request
+from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
 
 VALID_USERNAME = "admin"
-VALID_PASSWORD = "1234"
+HASHED_PASSWORD = generate_password_hash("1234")
 
 @app.route('/')
 def home ():
@@ -14,7 +15,7 @@ def login ():
 	username = request.form['username']
 	password = request.form['password']
 
-	if username == VALID_USERNAME and password == VALID_PASSWORD:
+	if username == VALID_USERNAME and check_password_hash(HASHED_PASSWORD, password):
 		return "<h2>Login Succesful!</h2>"
 	else:
 		return "<h2>Invalid username or password</h2>"
