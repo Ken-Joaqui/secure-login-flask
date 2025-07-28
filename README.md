@@ -6,7 +6,7 @@ A beginner-friendly cloud and cybersecurity project that simulates a secure logi
 
 ## Features
 
-- Secure login with hashed passwords using `bcrypt`
+- Secure login with hashed passwords using `werkzeug`
 - Supports multiple user credentials
 - Brute-force protection: blocks login after 3 failed attempts per user
 - Built with Flask, Python, HTML
